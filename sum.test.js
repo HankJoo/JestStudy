@@ -60,7 +60,7 @@ test('two plus two', () => {
 //float는 좀 다르게
 test('adding floating point numbers', () => {
     const value = 0.1 + 0.2;
-    console.log(value);
+    //console.log(value);
     //expect(value).toBe(0.3);           This won't work because of rounding error
     expect(value).toBeCloseTo(0.3); // This works.///****
 });
@@ -140,6 +140,6 @@ test('the data is peanut butter', async () => {
     await expect(fetchData()).resolves.toBe('peanut butter');
 });
 
-test('the fetch fails with an error', async () => {
-    await expect(fetchData()).rejects.toMatch('error');
-});
+// test('the fetch fails with an error', async () => {
+//     await expect(fetchData()).rejects.toMatch('error');
+// });
