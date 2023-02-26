@@ -74,3 +74,72 @@ test('there is no I in team', () => {
 test('but there is a "stop" in Christoph', () => {
     expect('Christoph').toMatch(/stoph/);
 });
+
+//Arrays and iterables
+const shoppingList = [
+    'diapers',
+    'kleenex',
+    'trash bags',
+    'paper towels',
+    'milk',
+];
+
+const setShoppingList = new Set(shoppingList);
+
+test('the shopping list has 우유 on it', () => {
+    expect(shoppingList).toContain('milk');
+});
+
+test('the shopping list has 쓰레기봉투 on it', () => {
+    expect(setShoppingList).toContain('trash bags');
+});
+
+function compileAndroidCode() {
+    throw new Error('you are using the wrong JDK!');
+}
+
+//실패 중...예측 불가한 에러메시지 리턴지..
+test('compiling android goes as expected', () => {
+    expect(() => compileAndroidCode()).toThrow();
+    expect(() => compileAndroidCode()).toThrow(Error);
+
+    // You can also use a string that must be contained in the error message or a regexp
+    //expect(() => compileAndroidCode()).toThrow('you are using the wrong JDK');
+    expect(() => compileAndroidCode()).toThrow(/JDK/);
+
+    // Or you can match an exact error message using a regexp like below
+    //expect(() => compileAndroidCode()).toThrow(/^you are using the wrong JDK$/); // Test fails
+    expect(() => compileAndroidCode()).toThrow(/^you are using the wrong JDK!$/); // Test pass
+});
+
+async function fetchData() {
+    return "peanut butter"
+}
+
+test('the data is peanut butter', () => {
+    return fetchData().then(data => {
+        expect(data).toBe('peanut butter');
+    });
+});
+
+test('the data is peanut butter', async () => {
+    const data = await fetchData();
+    expect(data).toBe('peanut butter');
+});
+
+test('the fetch fails with an error', async () => {
+    //expect.assertions(1);
+    try {
+        await fetchData();
+    } catch (e) {
+        expect(e).toMatch('error');
+    }
+});
+
+test('the data is peanut butter', async () => {
+    await expect(fetchData()).resolves.toBe('peanut butter');
+});
+
+test('the fetch fails with an error', async () => {
+    await expect(fetchData()).rejects.toMatch('error');
+});
