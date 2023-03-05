@@ -1,9 +1,18 @@
 {
-  "devDependencies": {
-    "jest": "^29.4.3"
-  },
+  "name": "jest_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest",
-    "test1": "jest"
+    "test": "jest --experimental-vm-modules"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "@jest/globals": "^29.4.3"
   }
 }
